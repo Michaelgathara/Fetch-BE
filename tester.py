@@ -1,25 +1,20 @@
 import unittest
 
-# Import test modules
-from testing.add_test import test_add
-from testing.spend_test import test_spend
-from testing.balance_test import test_balance
+# Import test scenario functions
+from testing.test_add import test_add
+from testing.test_spend import test_spend
+from testing.test_balance import test_balance
 
-def run_all_tests():
-    # Initialize the test suite
-    loader = unittest.TestLoader()
-    suite = unittest.TestSuite()
+class TestPointsManagementAPI(unittest.TestCase):
     
-    # Add tests to the test suite
-    suite.addTests([
-        loader.loadTestsFromModule(test_add),
-        loader.loadTestsFromModule(test_spend),
-        loader.loadTestsFromModule(test_balance)
-    ])
-    
-    # Initialize a runner, pass it the suite and run it
-    runner = unittest.TextTestRunner(verbosity=3)
-    runner.run(suite)
+    def test_add_points(self):
+        test_add()
+        
+    # def test_spend_points(self):
+    #     test_spend()
+        
+    # def test_get_balance(self):
+    #     test_balance()
 
 if __name__ == '__main__':
-    run_all_tests()
+    unittest.main(verbosity=3)

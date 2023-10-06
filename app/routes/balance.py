@@ -5,7 +5,4 @@ from . import routes_bp
 
 @routes_bp.route('/balance', methods=['GET'])
 def get_balance():
-    """
-
-    """
     return make_response(jsonify(payer_balances), 200)
