@@ -1,0 +1,32 @@
+My technologies and why:
+
+Python: For this exercise, Python seemed like a fitting choice given that it can easily handle the logic and data manipulation required. It's power to prototype quickly with relatively few installs was a bonus
+
+Flask: It's easy to get up and running, which is why it was chosen for this project. It is also well-documented and supports RESTful request dispatching.
+
+Unittest: It is part of Python's Standard Library, supports test automation, and is easy to get started with.
+
+
+Advantages:
+Simplicity: The code is straightforward and easy to understand, which makes it accessible for further development or modification.
+
+Modular Design: The project is structured in a modular fashion, separating the routes, models, and utilities, which improves readability and maintainability.
+
+Test Coverage: The project includes unit tests to validate the primary functionalities, ensuring that the code is robust and works as expected.
+
+Error Handling: The solution includes basic error handling for incorrect inputs or insufficient points, which enhances the user experience.
+
+Disadvantages:
+Lack of a Database: The current solution uses Python's native data structures to store transactions and payer balances, which won't persist if the application restarts.
+
+Limited Validation: The current implementation does basic input validation but lacks more comprehensive checks (e.g., date format validation, payer name validation).
+
+Concurrency: The current implementation doesn't account for potential issues related to concurrent requests, which might be important in a production environment.
+
+Scalability: While the data structures and algorithms used are relatively efficient, they may not scale well for very large numbers of transactions or users.
+
+Overall, the solution is well-suited for the scope of this exercise but would require further development to be production-ready.
+
+
+My favorite project thus far has been working on the interpreters for my research lab's experimental language. My research lab is working on a language called `Brouhaha` which is a small subset of the Racket programming language. I am responsible for the interpreters of the language. Prior to this project, I had never written an interpreters or even worked on a programming language. I came to learn that the field of programming language research is mostly still research papers and not many tutorials online, thus the challenge of translating research papers to code was thrilling.
+
