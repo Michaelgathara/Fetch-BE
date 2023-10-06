@@ -5,7 +5,20 @@ app = create_app()
 
 def test_balance():
     """
-    TODO: 
+    Tests the balance endpoint of the points API.
+
+    Initializes the payer_balances dictionary with a set of test balances, then sends a GET request to the balance endpoint.
+    Checks that the response status code is 200 and that the response body matches the expected payer balances.
+    If the test fails, raises an AssertionError.
+
+    Expects the following inputs:
+    - None
+
+    Returns:
+    - None
+
+    Raises:
+    - AssertionError: If the test fails.
     """
     client = app.test_client()
     

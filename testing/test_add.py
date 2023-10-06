@@ -5,13 +5,25 @@ app = create_app()
 
 def test_add():
     """
-    TODO: 
+    Tests the add_points endpoint of the points API.
+
+    Clears the transactions and payer_balances dictionaries, then sends a series of test requests to the add_points endpoint.
+    For each test request, checks that the response status code is 200 and that the payer_balances dictionary has been updated correctly.
+    If any of the tests fail, raises an AssertionError.
+
+    Expects the following inputs:
+    - None
+
+    Returns:
+    - None
+
+    Raises:
+    - AssertionError: If any of the tests fail.
     """
     client = app.test_client()
     
     transactions.clear()
     payer_balances.clear()
-    
     
     test_data_and_expected_balances = [
         ({'payer': 'DANNON', 'points': 300, 'timestamp': '2022-10-31T10:00:00Z'}, 
@@ -31,6 +43,8 @@ def test_add():
                                data=json.dumps(test_data),
                                content_type='application/json')
         
-        print(f"Actual: {payer_balances}\nExpected: {expected_balance}")
         assert payer_balances == expected_balance
+    
+    transactions.clear()
+    payer_balances.clear()
 

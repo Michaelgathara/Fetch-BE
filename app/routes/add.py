@@ -8,7 +8,17 @@ from . import routes_bp
 @routes_bp.route('/add', methods=['POST'])
 def add_points():
     """
-    TODO:
+    Adds points to a payer's balance and records the transaction.
+
+    Expects a JSON payload with the following fields:
+    - payer: A string representing the payer's name.
+    - points: An integer representing the number of points to add or subtract.
+    - timestamp: A string representing the timestamp of the transaction.
+
+    Returns a JSON response with the updated payer balances.
+
+    Raises:
+    - 400 Bad Request: If the JSON payload is missing any of the required fields or if the fields have invalid types.
     """
     data = request.get_json()
     
@@ -20,7 +30,7 @@ def add_points():
         return make_response('Invalid points', 400)
     if not payer or not isinstance(payer, str):
         return make_response('Invalid payer', 400)
-    if not points or not isinstance(points, int) or points <= 0:
+    if not points or not isinstance(points, int):
         return make_response('Invalid points', 400)
     if not timestamp or not isinstance(timestamp, str):
         return make_response('Invalid timestamp', 400)
@@ -32,7 +42,6 @@ def add_points():
     })
     
     if payer in payer_balances:
-        print(points)
         new_balance = payer_balances[payer] + points
         if new_balance < 0:
             return make_response('Insufficient points for payer', 400)

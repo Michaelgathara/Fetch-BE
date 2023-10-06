@@ -6,7 +6,14 @@ from . import routes_bp
 @routes_bp.route('/spend', methods=['POST'])
 def spend_points():
     """
-    TODO: 
+    Spends points from the payer_balances dictionary and records the transaction.
+
+    Expects a JSON payload with the following fields:
+    - points: An integer representing the number of points to spend.
+
+    Raises:
+    - 400 Bad Request: If the JSON payload is missing the points field, has an invalid type, or has a value less than or equal to zero.
+    - 400 Bad Request: If the total number of points to spend is greater than the current total balance across all payers.
     """
     data = request.get_json()
     
@@ -21,11 +28,4 @@ def spend_points():
     
     spent_points = spend(points_to_spend, transactions, payer_balances)
     
-    for spent in spent_points:
-        payer_name = spent['payer']
-        points_spent = spent['points']
-        
-        payer_balances[payer_name] += points_spent 
-    
-
     return make_response(jsonify(spent_points), 200)
